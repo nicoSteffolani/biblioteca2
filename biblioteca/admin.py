@@ -18,7 +18,7 @@ class RevistaAdmin(admin.ModelAdmin):
     )
 
 class LibroAdmin(admin.ModelAdmin):
-    list_display = ['titulo', 'autor','status', 'editorial']
+    list_display = ['titulo', 'autor','status', 'editorial', 'foto_portada']
     inlines = [TipoMaterialInline, ]
 
     fieldsets = (
@@ -26,7 +26,7 @@ class LibroAdmin(admin.ModelAdmin):
             'fields': ('status','titulo')
         }),
         ('Datos',{
-            'fields': ('editorial', 'autor', 'año')
+            'fields': ('editorial', 'autor', 'año', 'foto_portada')
         }),
     )
 
