@@ -8,10 +8,27 @@ class TipoMaterialInline(admin.TabularInline):
 class RevistaAdmin(admin.ModelAdmin):
     inlines = [TipoMaterialInline,]
     list_display = ['titulo', 'autor','status', 'marca']
+    fieldsets = (
+        ('Compra',{
+            'fields': ('status','marca')
+        }),
+        ('Datos',{
+            'fields': ('titulo', 'autor', 'año')
+        }),
+    )
 
 class LibroAdmin(admin.ModelAdmin):
     list_display = ['titulo', 'autor','status', 'editorial']
     inlines = [TipoMaterialInline, ]
+
+    fieldsets = (
+        ('Compra',{
+            'fields': ('status','titulo')
+        }),
+        ('Datos',{
+            'fields': ('editorial', 'autor', 'año')
+        }),
+    )
 
 
 class TipoPersonaInline(admin.TabularInline):
@@ -22,10 +39,28 @@ class AlumnoAdmin(admin.ModelAdmin):
     inlines = [TipoPersonaInline,]
     list_display = ['nombre', 'apellido', 'adeuda', 'matricula']
 
+    fieldsets = (
+        ('Informacion Personal',{
+            'fields': ('nombre','apellido', 'correo', 'telefono')
+        }),
+        ('Informacion extra',{
+            'fields': ('matricula', 'adeuda', 'numLibros')
+        }),
+    )
+
 
 class ProfesorAdmin(admin.ModelAdmin):
     list_display = ['nombre', 'apellido', 'adeuda', 'numEmpleado']
     inlines = [TipoPersonaInline,]
+
+    fieldsets = (
+        ('Informacion Personal',{
+            'fields': ('nombre','apellido', 'correo', 'telefono')
+        }),
+        ('Informacion extra',{
+            'fields': ('numEmpleado', 'adeuda', 'numLibros')
+        }),
+    )
 
 
 class PrestamoAdmin(admin.ModelAdmin):

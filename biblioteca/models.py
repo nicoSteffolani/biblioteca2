@@ -17,6 +17,7 @@ class Material(models.Model):
 
 class Libro(Material):
     editorial = models.CharField(max_length=30)
+    #foto_portada = models.ImageField(max_length = 100, upload_to='imagenes/', default='imagenes/default.png', blank=True)
 
 
 class Revista(Material):
